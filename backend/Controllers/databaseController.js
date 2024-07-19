@@ -9,7 +9,7 @@ exports.initializeDatabase = async (req, res) => {
     );
     const transactions = response.data;
 
-    await ProductTransaction.deleteMany({}); // Clear existing data
+    await ProductTransaction.deleteMany({}); 
 
     const result = await ProductTransaction.insertMany(transactions);
     console.log(`Inserted ${result.length} transactions`);
