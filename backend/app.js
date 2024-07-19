@@ -1,18 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv").config();
 const productRoutes = require("./routes/productRoutes");
 const cors = require("cors");
 const app = express();
 app.use(cors());
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://mayankguptaedu:JxUvHMCJOdz9fm0E@cluster0.f3tv539.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGODB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.use(bodyParser.json());
 app.use("/api", productRoutes);
